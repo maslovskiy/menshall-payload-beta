@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-export const Media: CollectionConfig = {
+export const MediaCollection: CollectionConfig = {
   slug: 'media',
   access: {
     read: () => true,
@@ -9,6 +9,7 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
+      defaultValue: 'alt',
       required: true,
     },
   ],
