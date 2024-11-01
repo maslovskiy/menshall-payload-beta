@@ -17,6 +17,7 @@ import {
   AcademyTeachersGlobal, AcademyProgramGlobal, ScheduleGlobal,
 } from './admin/globals'
 import { BarbersGlobal } from '@/admin/globals/Barbers'
+import { s3Storage } from '@payloadcms/storage-s3'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -40,6 +41,23 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    s3Storage({
+      collections: {
+        'media': {
+          prefix: 'media',
+        },
+      },
+      bucket: process.env.S3_BUCKET,
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY,
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+        },
+        region: process.env.S3_REGION,
+        endpoint: process.env.S3_ENDPOINT,
+        forcePathStyle: true,
+      }
+    }),
     // storage-adapter-placeholder
   ],
 })
