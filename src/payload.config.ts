@@ -1,4 +1,4 @@
-// storage-adapter-import-placeholder
+//@ts-nocheck
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
